@@ -21,3 +21,10 @@ data/
 .DS_Store
 coverage
 .DS_Store
+
+# Ignore real env files
+.env
+.env.*
+
+# But keep the example in git
+!.env.example
