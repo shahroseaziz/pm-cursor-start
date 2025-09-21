@@ -1,0 +1,33 @@
+name: Repo Audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 8 * * 1'  # every Monday 08:00 UTC
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+
+      - name: Install deps (if package.json exists)
+        run: |
+          if [ -f package.json ]; then pnpm install --frozen-lockfile || pnpm install; fi
+
+      - name: Run audit script
+        run: |
+          bash scripts/ci/audit.sh
