@@ -19,6 +19,7 @@ fi
 say "🔎 Checking for hardcoded secrets in src/"
 if grep -RIn -E '(password|secret|api[_-]?key|token|BEGIN [A-Z ]+ PRIVATE KEY)' \
   src/ --exclude-dir=node_modules --exclude='*.test.*' --exclude='*.spec.*' \
+  | grep -vE '^\s*(//|\*)' \
   | grep -v 'process\.env' || true; then
   warn "Potential hardcoded secrets found (review output above)."
 else
