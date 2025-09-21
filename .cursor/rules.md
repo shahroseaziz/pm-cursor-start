@@ -1,4 +1,9 @@
-# Cursor Repository Rules (v1)
+# Cursor Repository Rules
+
+**Stack:** Next.js (App Router) + TypeScript, zod for validation, vitest for tests.  
+**Diff policy:** ≤ 3 files, ≤ ~120 LOC per task.  
+**Security:** no secrets, no CI edits, env via `src/env.ts`.
+
 # Purpose: keep agent output safe, small, typed, and test‑backed. Agents = helpers, not freehand coders.
 
 ## Tech stack (enforce)
@@ -49,5 +54,12 @@
 - No dead code / unused imports; lints pass.
 - No secrets, no CI edits, no broad file churn.
 - Tests present and meaningful; negative cases included.
+
+## Runtime / Local Server Rules
+
+- Only **humans** (e.g. @shahroseaziz) may run local servers (`pnpm dev`, `npm run dev`, `next dev`).
+- AI agents **must not** run or background a local server.
+- If a server is needed for testing, agents should **output a reminder step** for the human reviewer instead of executing it.
+- Use `pnpm build` / `pnpm test` / `pnpm run typecheck` for verification only.
 
 # End of rules

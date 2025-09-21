@@ -1,0 +1,32 @@
+{
+    "name": "pm-cursor-start",
+    "private": true,
+    "version": "0.1.0",
+    "type": "module",
+    "scripts": {
+      "dev": "next dev",
+      "build": "next build",
+      "start": "next start",
+      "typecheck": "tsc -p tsconfig.json --noEmit",
+      "test": "vitest run",
+      "lint": "echo \"(add eslint later)\"",
+      "security-review": "bash scripts/security/security-review.sh"
+    },
+    "dependencies": {
+      "next": "14.2.5",
+      "react": "18.3.1",
+      "react-dom": "18.3.1",
+      "zod": "3.23.8"
+    },
+    "devDependencies": {
+      "@types/node": "20.14.11",
+      "@types/react": "18.3.3",
+      "@types/react-dom": "18.3.0",
+      "typescript": "5.5.3",
+      "vitest": "1.6.0"
+    },
+    "engines": {
+      "node": ">=20.0.0"
+    }
+  }
+  
